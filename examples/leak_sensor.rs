@@ -4,18 +4,18 @@ use hap::{
     accessory::{leak_sensor::LeakSensorAccessory, AccessoryCategory, AccessoryInformation},
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let leak_sensor = LeakSensorAccessory::new(1, AccessoryInformation {
-        name: "Acme Leak Sensor".into(),
-        ..Default::default()
-    })?;
+    let leak_sensor = LeakSensorAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Leak Sensor".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

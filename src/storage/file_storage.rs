@@ -157,7 +157,9 @@ impl Storage for FileStorage {
         self.write_bytes("config.json", config_bytes).await
     }
 
-    async fn delete_config(&mut self) -> Result<()> { self.remove_file("config.json").await }
+    async fn delete_config(&mut self) -> Result<()> {
+        self.remove_file("config.json").await
+    }
 
     async fn load_aid_cache(&self) -> Result<Vec<u64>> {
         let aid_cache_bytes = self.read_bytes("aid_cache.json").await?;
@@ -173,7 +175,9 @@ impl Storage for FileStorage {
         self.write_bytes("aid_cache.json", aid_cache_bytes).await
     }
 
-    async fn delete_aid_cache(&mut self) -> Result<()> { self.remove_file("aid_cache.json").await }
+    async fn delete_aid_cache(&mut self) -> Result<()> {
+        self.remove_file("aid_cache.json").await
+    }
 
     async fn load_pairing(&self, id: &Uuid) -> Result<Pairing> {
         let key = format!("pairings/{}.json", id.to_string());
@@ -228,7 +232,9 @@ impl Storage for FileStorage {
         self.write_bytes(&format!("misc/{}", key), value.to_vec()).await
     }
 
-    async fn delete_bytes(&mut self, key: &str) -> Result<()> { self.remove_file(&format!("misc/{}", key)).await }
+    async fn delete_bytes(&mut self, key: &str) -> Result<()> {
+        self.remove_file(&format!("misc/{}", key)).await
+    }
 }
 
 #[cfg(test)]

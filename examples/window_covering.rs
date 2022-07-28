@@ -4,18 +4,18 @@ use hap::{
     accessory::{window_covering::WindowCoveringAccessory, AccessoryCategory, AccessoryInformation},
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let window_covering = WindowCoveringAccessory::new(1, AccessoryInformation {
-        name: "Acme Window Covering".into(),
-        ..Default::default()
-    })?;
+    let window_covering = WindowCoveringAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Window Covering".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

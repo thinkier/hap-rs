@@ -4,18 +4,18 @@ use hap::{
     accessory::{lightbulb::LightbulbAccessory, AccessoryCategory, AccessoryInformation},
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let lightbulb = LightbulbAccessory::new(1, AccessoryInformation {
-        name: "Acme Lightbulb".into(),
-        ..Default::default()
-    })?;
+    let lightbulb = LightbulbAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Lightbulb".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

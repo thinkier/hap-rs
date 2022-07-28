@@ -4,18 +4,18 @@ use hap::{
     accessory::{garage_door_opener::GarageDoorOpenerAccessory, AccessoryCategory, AccessoryInformation},
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let garage_door_opener = GarageDoorOpenerAccessory::new(1, AccessoryInformation {
-        name: "Acme Garage Door Opener".into(),
-        ..Default::default()
-    })?;
+    let garage_door_opener = GarageDoorOpenerAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Garage Door Opener".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

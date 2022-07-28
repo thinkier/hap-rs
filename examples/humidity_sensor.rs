@@ -4,18 +4,18 @@ use hap::{
     accessory::{humidity_sensor::HumiditySensorAccessory, AccessoryCategory, AccessoryInformation},
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let humidity_sensor = HumiditySensorAccessory::new(1, AccessoryInformation {
-        name: "Acme Humidity Sensor".into(),
-        ..Default::default()
-    })?;
+    let humidity_sensor = HumiditySensorAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Humidity Sensor".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

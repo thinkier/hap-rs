@@ -26,17 +26,13 @@ use crate::{
                 pair_setup::PairSetup,
                 pair_verify::PairVerify,
                 pairings::Pairings,
-                HandlerExt,
-                JsonHandler,
-                TlvHandler,
+                HandlerExt, JsonHandler, TlvHandler,
             },
-            status_response,
-            EventObject,
+            status_response, EventObject,
         },
         tcp::{EncryptedStream, Session, StreamWrapper},
     },
-    Error,
-    Result,
+    Error, Result,
 };
 
 struct Handlers {
@@ -123,7 +119,7 @@ impl Service<Request<Body>> for Api {
 
         let fut = async move {
             match handler.take() {
-                Some(handler) =>
+                Some(handler) => {
                     handler
                         .lock()
                         .await
@@ -137,7 +133,8 @@ impl Service<Request<Body>> for Api {
                             accessory_database,
                             event_emitter,
                         )
-                        .await,
+                        .await
+                },
                 None => future::ready(status_response(StatusCode::NOT_FOUND)).await,
             }
         }

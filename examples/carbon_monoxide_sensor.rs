@@ -4,18 +4,18 @@ use hap::{
     accessory::{carbon_monoxide_sensor::CarbonMonoxideSensorAccessory, AccessoryCategory, AccessoryInformation},
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let carbon_monoxide_sensor = CarbonMonoxideSensorAccessory::new(1, AccessoryInformation {
-        name: "Acme Carbon monoxide Sensor".into(),
-        ..Default::default()
-    })?;
+    let carbon_monoxide_sensor = CarbonMonoxideSensorAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Carbon monoxide Sensor".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

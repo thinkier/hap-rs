@@ -2,24 +2,22 @@ use tokio;
 
 use hap::{
     accessory::{
-        stateless_programmable_switch::StatelessProgrammableSwitchAccessory,
-        AccessoryCategory,
-        AccessoryInformation,
+        stateless_programmable_switch::StatelessProgrammableSwitchAccessory, AccessoryCategory, AccessoryInformation,
     },
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let stateless_programmable_switch = StatelessProgrammableSwitchAccessory::new(1, AccessoryInformation {
-        name: "Acme Stateless Programmable Switch".into(),
-        ..Default::default()
-    })?;
+    let stateless_programmable_switch = StatelessProgrammableSwitchAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Stateless Programmable Switch".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

@@ -4,18 +4,18 @@ use hap::{
     accessory::{security_system::SecuritySystemAccessory, AccessoryCategory, AccessoryInformation},
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let security_system = SecuritySystemAccessory::new(1, AccessoryInformation {
-        name: "Acme Security System".into(),
-        ..Default::default()
-    })?;
+    let security_system = SecuritySystemAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Security System".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

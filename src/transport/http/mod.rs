@@ -1,16 +1,12 @@
 use hyper::{
     header::{CONTENT_LENGTH, CONTENT_TYPE},
-    Body,
-    Response,
-    StatusCode,
+    Body, Response, StatusCode,
 };
 use serde::{Deserialize, Serialize};
 
 use crate::{
     characteristic::{Format, Perm, Unit},
-    Error,
-    HapType,
-    Result,
+    Error, HapType, Result,
 };
 
 mod handler;

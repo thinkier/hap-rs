@@ -5,18 +5,13 @@ use crate::{
     characteristic::{
         accessory_flags::AccessoryFlagsCharacteristic,
         application_matching_identifier::ApplicationMatchingIdentifierCharacteristic,
-        configured_name::ConfiguredNameCharacteristic,
-        firmware_revision::FirmwareRevisionCharacteristic,
-        hardware_finish::HardwareFinishCharacteristic,
-        hardware_revision::HardwareRevisionCharacteristic,
-        product_data::ProductDataCharacteristic,
-        software_revision::SoftwareRevisionCharacteristic,
-        HapCharacteristic,
+        configured_name::ConfiguredNameCharacteristic, firmware_revision::FirmwareRevisionCharacteristic,
+        hardware_finish::HardwareFinishCharacteristic, hardware_revision::HardwareRevisionCharacteristic,
+        product_data::ProductDataCharacteristic, software_revision::SoftwareRevisionCharacteristic, HapCharacteristic,
     },
     pointer,
     service::{accessory_information::AccessoryInformationService, HapService},
-    HapType,
-    Result,
+    HapType, Result,
 };
 
 mod category;

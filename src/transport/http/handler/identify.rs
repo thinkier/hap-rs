@@ -5,14 +5,15 @@ use serde_json::json;
 use crate::{
     pointer,
     transport::http::{handler::JsonHandlerExt, json_response, status_response, Status},
-    HapType,
-    Result,
+    HapType, Result,
 };
 
 pub struct Identify;
 
 impl Identify {
-    pub fn new() -> Identify { Identify }
+    pub fn new() -> Identify {
+        Identify
+    }
 }
 
 impl JsonHandlerExt for Identify {

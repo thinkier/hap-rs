@@ -4,18 +4,18 @@ use hap::{
     accessory::{television::TelevisionAccessory, AccessoryCategory, AccessoryInformation},
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let television = TelevisionAccessory::new(1, AccessoryInformation {
-        name: "Acme Television".into(),
-        ..Default::default()
-    })?;
+    let television = TelevisionAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Television".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

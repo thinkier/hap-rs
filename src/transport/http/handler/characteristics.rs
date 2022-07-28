@@ -7,23 +7,18 @@ use url::form_urlencoded;
 use crate::{
     pointer,
     transport::http::{
-        handler::JsonHandlerExt,
-        json_response,
-        status_response,
-        CharacteristicResponseBody,
-        ReadResponseObject,
-        Status,
-        WriteObject,
-        WriteResponseObject,
+        handler::JsonHandlerExt, json_response, status_response, CharacteristicResponseBody, ReadResponseObject,
+        Status, WriteObject, WriteResponseObject,
     },
-    Error,
-    Result,
+    Error, Result,
 };
 
 pub struct GetCharacteristics;
 
 impl GetCharacteristics {
-    pub fn new() -> Self { GetCharacteristics }
+    pub fn new() -> Self {
+        GetCharacteristics
+    }
 }
 
 impl JsonHandlerExt for GetCharacteristics {
@@ -119,7 +114,9 @@ fn check_flags(flags: &HashMap<String, String>) -> (bool, bool, bool, bool) {
 pub struct UpdateCharacteristics;
 
 impl UpdateCharacteristics {
-    pub fn new() -> Self { UpdateCharacteristics {} }
+    pub fn new() -> Self {
+        UpdateCharacteristics {}
+    }
 }
 
 impl JsonHandlerExt for UpdateCharacteristics {

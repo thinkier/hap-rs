@@ -664,7 +664,9 @@ fn array_length_helper(
     Ok(())
 }
 
-fn shorten_uuid(id: &str) -> String { id.trim_start_matches('0').to_owned() }
+fn shorten_uuid(id: &str) -> String {
+    id.trim_start_matches('0').to_owned()
+}
 
 fn snake_case_helper(
     h: &Helper,

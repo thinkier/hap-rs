@@ -6,18 +6,18 @@ use hap::{
     futures::future::FutureExt,
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let mut lightbulb = LightbulbAccessory::new(1, AccessoryInformation {
-        name: "Acme Lightbulb".into(),
-        ..Default::default()
-    })?;
+    let mut lightbulb = LightbulbAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Lightbulb".into(),
+            ..Default::default()
+        },
+    )?;
 
     lightbulb.lightbulb.power_state.on_read_async(Some(|| {
         async {

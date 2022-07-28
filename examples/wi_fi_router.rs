@@ -4,18 +4,18 @@ use hap::{
     accessory::{wi_fi_router::WiFiRouterAccessory, AccessoryCategory, AccessoryInformation},
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let wi_fi_router = WiFiRouterAccessory::new(1, AccessoryInformation {
-        name: "Acme Wi-Fi Router".into(),
-        ..Default::default()
-    })?;
+    let wi_fi_router = WiFiRouterAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Wi-Fi Router".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

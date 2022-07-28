@@ -15,7 +15,9 @@ use crate::{
 pub struct Pairings;
 
 impl Pairings {
-    pub fn new() -> Pairings { Pairings }
+    pub fn new() -> Pairings {
+        Pairings
+    }
 }
 
 #[derive(Debug, Clone)]

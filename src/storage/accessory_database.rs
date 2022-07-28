@@ -9,8 +9,7 @@ use crate::{
     characteristic::Perm,
     pointer,
     transport::http::{ReadResponseObject, Status, WriteObject, WriteResponseObject},
-    Error,
-    Result,
+    Error, Result,
 };
 
 /// `AccessoryDatabase` is a wrapper type holding a list of accessories.

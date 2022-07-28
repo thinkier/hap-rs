@@ -8,10 +8,7 @@ use hap::{
     futures::future::FutureExt,
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    MacAddress,
-    Pin,
-    Result,
+    Config, MacAddress, Pin, Result,
 };
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -21,10 +18,13 @@ struct LightbulbState {
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let mut lightbulb = LightbulbAccessory::new(1, AccessoryInformation {
-        name: "Acme Stateful Lightbulb".into(),
-        ..Default::default()
-    })?;
+    let mut lightbulb = LightbulbAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Stateful Lightbulb".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 

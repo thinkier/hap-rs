@@ -3,13 +3,11 @@
 use serde::ser::{Serialize, SerializeStruct, Serializer};
 
 use crate::{
-    service::HapService,
     characteristic::{
-        HapCharacteristic,
-		current_transport::CurrentTransportCharacteristic,
-		wi_fi_capabilities::WiFiCapabilitiesCharacteristic,
-		wi_fi_configuration_control::WiFiConfigurationControlCharacteristic,
-	},
+        current_transport::CurrentTransportCharacteristic, wi_fi_capabilities::WiFiCapabilitiesCharacteristic,
+        wi_fi_configuration_control::WiFiConfigurationControlCharacteristic, HapCharacteristic,
+    },
+    service::HapService,
     HapType,
 };
 
@@ -27,13 +25,13 @@ pub struct WiFiTransportService {
     /// An array of numbers containing the instance IDs of the services that this service links to.
     linked_services: Vec<u64>,
 
-	/// Current Transport characteristic (required).
-	pub current_transport: CurrentTransportCharacteristic,
-	/// Wi-Fi Capabilities characteristic (required).
-	pub wi_fi_capabilities: WiFiCapabilitiesCharacteristic,
+    /// Current Transport characteristic (required).
+    pub current_transport: CurrentTransportCharacteristic,
+    /// Wi-Fi Capabilities characteristic (required).
+    pub wi_fi_capabilities: WiFiCapabilitiesCharacteristic,
 
-	/// Wi-Fi Configuration Control characteristic (optional).
-	pub wi_fi_configuration_control: Option<WiFiConfigurationControlCharacteristic>,
+    /// Wi-Fi Configuration Control characteristic (optional).
+    pub wi_fi_configuration_control: Option<WiFiConfigurationControlCharacteristic>,
 }
 
 impl WiFiTransportService {
@@ -42,10 +40,13 @@ impl WiFiTransportService {
         Self {
             id,
             hap_type: HapType::WiFiTransport,
-			current_transport: CurrentTransportCharacteristic::new(id + 1 + 0, accessory_id),
-			wi_fi_capabilities: WiFiCapabilitiesCharacteristic::new(id + 1 + 1, accessory_id),
-			wi_fi_configuration_control: Some(WiFiConfigurationControlCharacteristic::new(id + 1 + 0 + 2, accessory_id)),
-			..Default::default()
+            current_transport: CurrentTransportCharacteristic::new(id + 1 + 0, accessory_id),
+            wi_fi_capabilities: WiFiCapabilitiesCharacteristic::new(id + 1 + 1, accessory_id),
+            wi_fi_configuration_control: Some(WiFiConfigurationControlCharacteristic::new(
+                id + 1 + 0 + 2,
+                accessory_id,
+            )),
+            ..Default::default()
         }
     }
 }
@@ -111,26 +112,21 @@ impl HapService for WiFiTransportService {
 
     fn get_characteristics(&self) -> Vec<&dyn HapCharacteristic> {
         #[allow(unused_mut)]
-        let mut characteristics: Vec<&dyn HapCharacteristic> = vec![
-			&self.current_transport,
-			&self.wi_fi_capabilities,
-		];
-		if let Some(c) = &self.wi_fi_configuration_control {
-		    characteristics.push(c);
-		}
-		characteristics
+        let mut characteristics: Vec<&dyn HapCharacteristic> = vec![&self.current_transport, &self.wi_fi_capabilities];
+        if let Some(c) = &self.wi_fi_configuration_control {
+            characteristics.push(c);
+        }
+        characteristics
     }
 
     fn get_mut_characteristics(&mut self) -> Vec<&mut dyn HapCharacteristic> {
         #[allow(unused_mut)]
-        let mut characteristics: Vec<&mut dyn HapCharacteristic> = vec![
-			&mut self.current_transport,
-			&mut self.wi_fi_capabilities,
-		];
-		if let Some(c) = &mut self.wi_fi_configuration_control {
-		    characteristics.push(c);
-		}
-		characteristics
+        let mut characteristics: Vec<&mut dyn HapCharacteristic> =
+            vec![&mut self.current_transport, &mut self.wi_fi_capabilities];
+        if let Some(c) = &mut self.wi_fi_configuration_control {
+            characteristics.push(c);
+        }
+        characteristics
     }
 }
 

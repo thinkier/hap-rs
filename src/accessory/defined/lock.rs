@@ -3,13 +3,10 @@ use serde::ser::{Serialize, SerializeStruct, Serializer};
 use crate::{
     accessory::{AccessoryInformation, HapAccessory},
     service::{
-        accessory_information::AccessoryInformationService,
-        lock_management::LockManagementService,
-        lock_mechanism::LockMechanismService,
-        HapService,
+        accessory_information::AccessoryInformationService, lock_management::LockManagementService,
+        lock_mechanism::LockMechanismService, HapService,
     },
-    HapType,
-    Result,
+    HapType, Result,
 };
 
 /// Lock Accessory.
@@ -52,9 +49,13 @@ impl LockAccessory {
 }
 
 impl HapAccessory for LockAccessory {
-    fn get_id(&self) -> u64 { self.id }
+    fn get_id(&self) -> u64 {
+        self.id
+    }
 
-    fn set_id(&mut self, id: u64) { self.id = id; }
+    fn set_id(&mut self, id: u64) {
+        self.id = id;
+    }
 
     fn get_service(&self, hap_type: HapType) -> Option<&dyn HapService> {
         for service in self.get_services() {

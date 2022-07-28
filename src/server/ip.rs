@@ -14,8 +14,7 @@ use crate::{
     server::Server,
     storage::{accessory_database::AccessoryDatabase, Storage},
     transport::{http::server::Server as HttpServer, mdns::MdnsResponder},
-    BonjourStatusFlag,
-    Result,
+    BonjourStatusFlag, Result,
 };
 
 /// HAP Server via TCP/IP.
@@ -231,9 +230,13 @@ impl Server for IpServer {
         Box::pin(handle)
     }
 
-    fn config_pointer(&self) -> pointer::Config { self.config.clone() }
+    fn config_pointer(&self) -> pointer::Config {
+        self.config.clone()
+    }
 
-    fn storage_pointer(&self) -> pointer::Storage { self.storage.clone() }
+    fn storage_pointer(&self) -> pointer::Storage {
+        self.storage.clone()
+    }
 
     async fn add_accessory<A: HapAccessory + 'static>(&self, accessory: A) -> Result<pointer::Accessory> {
         let aid = accessory.get_id();

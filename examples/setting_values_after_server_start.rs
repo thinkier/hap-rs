@@ -5,19 +5,18 @@ use hap::{
     serde_json::Value,
     server::{IpServer, Server},
     storage::{FileStorage, Storage},
-    Config,
-    HapType,
-    MacAddress,
-    Pin,
-    Result,
+    Config, HapType, MacAddress, Pin, Result,
 };
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let sensor = MotionSensorAccessory::new(1, AccessoryInformation {
-        name: "Acme Sensor".into(),
-        ..Default::default()
-    })?;
+    let sensor = MotionSensorAccessory::new(
+        1,
+        AccessoryInformation {
+            name: "Acme Sensor".into(),
+            ..Default::default()
+        },
+    )?;
 
     let mut storage = FileStorage::current_dir().await?;
 
